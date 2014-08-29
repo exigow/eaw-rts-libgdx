@@ -1,0 +1,14 @@
+{
+subPath: assets/,
+list: [
+	{
+		class: eaw.game.assets.Image,
+		id: 1,
+		filename: ship.png,
+		center: {
+			x: 13,
+			y: 13
+		}
+	}
+]
+}

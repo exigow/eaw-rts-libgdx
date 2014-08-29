@@ -1,0 +1,5 @@
+{
+	name: Interceptor,
+	imageHullId: 1,
+	vertices: [ 1, 4, 16, 1, 34, 5, 41, 16, 16, 24, 1, 21 ]
+}

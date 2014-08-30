@@ -1,5 +1,6 @@
 package eaw.game.mechanics;
 
+import com.badlogic.gdx.math.Vector3;
 import eaw.game.Camera;
 import eaw.game.World;
 import eaw.game.input.Inputs;
@@ -10,40 +11,48 @@ public class Controller {
   private final Camera camera;
   private final Inputs inputs;
 
+  private Action action;
+  private enum Action {
+    SELECTING
+  }
+
   public Controller(World world, Camera camera) {
     this.world = world;
     this.camera = camera;
     inputs = new Inputs();
+    action = null;
   }
 
   public void execute(float deltaTime) {
-    camera.update(1.0f);
     inputs.update();
+    camera.addMoveScaled(getCameraMovement(deltaTime));
+    camera.update(1.0f);
+  }
 
+  private Vector3 getCameraMovement(float deltaTime) {
     float planeSpeed = 16.0f * deltaTime,
       depthSpeed = .075f * deltaTime;
-    camera.addMoveScaled(
-      cameraKeyVectorControl(
-        inputs.cameraRight.isHeld(),
-        inputs.cameraLeft.isHeld()
+    return new Vector3(
+      oppositeKeysToVector(
+      inputs.cameraRight.isHeld(),
+      inputs.cameraLeft.isHeld()
       ) * planeSpeed,
-      cameraKeyVectorControl(
+      oppositeKeysToVector(
         inputs.cameraUp.isHeld(),
         inputs.cameraDown.isHeld()
       ) * planeSpeed,
-      cameraKeyVectorControl(
+      oppositeKeysToVector(
         inputs.cameraOut.isHeld(),
         inputs.cameraIn.isHeld()
-      ) * depthSpeed
-    );
+      ) * depthSpeed);
   }
 
-  private float cameraKeyVectorControl(boolean plus, boolean minus) {
-    if (plus && minus)
+  private float oppositeKeysToVector(boolean positive, boolean negative) {
+    if (positive && negative)
       return 0;
-    if (plus)
+    if (positive)
       return 1;
-    if (minus)
+    if (negative)
       return -1;
     return 0;
   }

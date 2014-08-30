@@ -37,7 +37,7 @@ public class Main implements ApplicationListener {
     camera = new Camera(screenSize);
     worldRenderer = new WorldRenderer(world, screenSize);
     controller = new Controller(world, camera);
-    Assets assets = Assets.createFromJsonFile(json, Gdx.files.local("assets/images.json")).load();
+    Assets assets = Assets.createFromJsonFile(json, Gdx.files.internal("assets/images.json")).load();
     drawingProvider = new DrawingProvider(assets);
     screenMatrix = new OrthographicCamera(screenSize.width, screenSize.height).combined.setTranslation(-1f, -1f, 0f);
 
@@ -49,6 +49,7 @@ public class Main implements ApplicationListener {
         Unit unit = new Unit(source);
         unit.place.position.set(tempGroupPosition);
         unit.place.position.add(MathUtilities.randn() * 128, MathUtilities.randn() * 128);
+        unit.target.set(unit.place);
         group.units.add(unit);
       }
     }
@@ -61,11 +62,11 @@ public class Main implements ApplicationListener {
     //controller.control(camera);
     //controller.selecting(camera, world.groups);
     //controller.action(camera, world.groups);
+    world.update(1.0f);
 
     controller.execute(1.0f);
 
     worldRenderer.renderWorld(drawingProvider, camera.orthographicCamera.combined);
-
 
     drawingProvider.setProjection(screenMatrix);
     worldRenderer.draw(drawingProvider);

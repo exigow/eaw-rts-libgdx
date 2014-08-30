@@ -45,7 +45,7 @@ public class _GameController {
     steppers.stepperRight.update(Gdx.input.isKeyPressed(Input.Keys.D));
     steppers.stepperIn.update(Gdx.input.isKeyPressed(Input.Keys.E));
     steppers.stepperOut.update(Gdx.input.isKeyPressed(Input.Keys.Q));
-
+/*
     if (steppers.stepperUp.stepIsEqual(Stepper.Step.HOLD)) {
       camera.addMoveScaled(0.0f, multiple_plane, 0.0f);
     } else {
@@ -67,7 +67,7 @@ public class _GameController {
         camera.addMoveScaled(0.0f, 0.0f, multiple_zoom);
       }
     }
-
+*/
     // Only one stepper can be active.
     if (steppers.stepperAction.stepIsEqual(Stepper.Step.WAIT)) {
       steppers.stepperSelect.update(Gdx.input.isButtonPressed(Input.Buttons.LEFT));

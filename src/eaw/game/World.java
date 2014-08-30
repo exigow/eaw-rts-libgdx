@@ -5,7 +5,7 @@ import eaw.game.utilities.DrawingProvider;
 
 import java.util.ArrayList;
 
-public class World implements Drawable {
+public class World implements Drawable, Mutable {
 
   public final ArrayList<Group> groups = new ArrayList<Group>();
 
@@ -14,4 +14,11 @@ public class World implements Drawable {
     for (Drawable drawableGroup : groups)
       drawableGroup.draw(provider);
   }
+
+  @Override
+  public void update(float deltaTime) {
+    for (Mutable group : groups)
+      group.update(deltaTime);
+  }
+
 }

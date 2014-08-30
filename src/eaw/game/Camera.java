@@ -23,10 +23,12 @@ public class Camera {
     orthographicCamera.translate(-viewSize.width / 2, -viewSize.height / 2);
   }
 
-  public void addMoveScaled(float x, float y, float z) {
-    targetPosition.x += x * targetPosition.z;
-    targetPosition.y += y * targetPosition.z;
-    targetPosition.z += z;
+  public void addMoveScaled(Vector3 vec) {
+    targetPosition.add(
+      vec.x * targetPosition.z,
+      vec.y * targetPosition.z,
+      vec.z
+    );
   }
 
   public void update(float deltaTime) {

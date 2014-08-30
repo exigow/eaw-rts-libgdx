@@ -5,18 +5,17 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.math.Matrix4;
+import com.sun.glass.ui.Size;
 import eaw.game.utilities.DrawingProvider;
-
-import java.awt.*;
 
 public class WorldRenderer implements Drawable {
 
   private final World world;
   private FrameBuffer mainFBO;
 
-  public WorldRenderer(World world, Point size) {
+  public WorldRenderer(World world, Size size) {
     this.world = world;
-    mainFBO = new FrameBuffer(Pixmap.Format.RGB888, size.x, size.y, false);
+    mainFBO = new FrameBuffer(Pixmap.Format.RGB888, size.width, size.height, false);
   }
 
   public void renderWorld(DrawingProvider renderProvider, Matrix4 matrix) {

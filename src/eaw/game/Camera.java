@@ -4,8 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-
-import java.awt.*;
+import com.sun.glass.ui.Size;
 
 public class Camera {
   public final OrthographicCamera orthographicCamera;
@@ -18,10 +17,10 @@ public class Camera {
     zMax = 4.0f,
     zMin = .125f;
 
-  public Camera(Point viewSize) {
-    orthographicCamera = new OrthographicCamera(viewSize.x, viewSize.y);
+  public Camera(Size viewSize) {
+    orthographicCamera = new OrthographicCamera(viewSize.width, viewSize.height);
     orthographicCamera.setToOrtho(false);
-    orthographicCamera.translate(-viewSize.x / 2, -viewSize.y / 2);
+    orthographicCamera.translate(-viewSize.width / 2, -viewSize.height / 2);
   }
 
   public void addMoveScaled(float x, float y, float z) {

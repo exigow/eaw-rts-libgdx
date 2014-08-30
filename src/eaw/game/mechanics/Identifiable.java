@@ -24,7 +24,7 @@ public abstract class Identifiable implements Comparable<Identifiable> {
 
   @Override
   public String toString() {
-      return "{" + id + "}";
+      return "<" + id + ">";
   }
 
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GameController {
+public class _GameController {
   public class Steppers {
     public final Stepper
       stepperSelect = new Stepper(),
@@ -149,7 +149,7 @@ public class GameController {
         for (Group g: selectedList) {
           Place orderSpot = new Place().setPosition(camera.getMouseWorldPosition());
           Order order = new MoveOrder(orderSpot);
-          g.orders.add(order);
+          g.orders.push(order);
         }
         break;
       }

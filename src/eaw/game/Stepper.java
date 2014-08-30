@@ -22,7 +22,7 @@ public class Stepper {
 
     /** Update step event based on source (which is true/false, like mouse button for example).
      * You should use this in each frame when source can be checked.
-     * Chain order of appearance is WAIT -> BEGIN -> HOLD -> END.
+     * Chain order of appearance is WAIT -> PRESS -> HOLD -> RELEASE.
      * @param source event source
      */
     public void update(boolean source) {
@@ -66,9 +66,9 @@ public class Stepper {
         String str = "";
         switch (actualStep) {
             case WAIT: { str = "WAIT"; break; }
-            case BEGIN: { str = "BEGIN"; break; }
+            case BEGIN: { str = "PRESS"; break; }
             case HOLD: { str = "HOLD"; break; }
-            case END: { str = "END"; break; }
+            case END: { str = "RELEASE"; break; }
         }
         return "<" + str + ">";
     }

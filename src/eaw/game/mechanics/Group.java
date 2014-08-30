@@ -1,18 +1,17 @@
 package eaw.game.mechanics;
 
-import com.badlogic.gdx.math.Vector2;
 import eaw.game.Drawable;
 import eaw.game.mechanics.orders.Order;
 import eaw.game.utilities.DrawingProvider;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Group extends Identifiable implements Drawable {
 
-  public final ArrayList<Unit> units = new ArrayList<Unit>();
-  public final List<Order> orders = new ArrayList<Order>();
-  public final Vector2 center = new Vector2();
+  public final List<Unit> units = new ArrayList<Unit>();
+  public final Stack<Order> orders = new Stack<Order>();
 
   @Override
   public void draw(DrawingProvider provider) {

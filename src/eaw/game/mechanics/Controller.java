@@ -20,18 +20,32 @@ public class Controller {
     camera.update(1.0f);
     inputs.update();
 
-    if (inputs.cameraUp.isPressed()) {
-      System.out.println("left is pressed");
-    }
+    float planeSpeed = 16.0f * deltaTime,
+      depthSpeed = .075f * deltaTime;
+    camera.addMoveScaled(
+      cameraKeyVectorControl(
+        inputs.cameraRight.isHeld(),
+        inputs.cameraLeft.isHeld()
+      ) * planeSpeed,
+      cameraKeyVectorControl(
+        inputs.cameraUp.isHeld(),
+        inputs.cameraDown.isHeld()
+      ) * planeSpeed,
+      cameraKeyVectorControl(
+        inputs.cameraOut.isHeld(),
+        inputs.cameraIn.isHeld()
+      ) * depthSpeed
+    );
+  }
 
-    if (inputs.cameraUp.isReleased()) {
-      System.out.println("left is released");
-    }
-
-    if (inputs.mouseLeft.isReleased()) {
-      System.out.println("left is released");
-    }
-
+  private float cameraKeyVectorControl(boolean plus, boolean minus) {
+    if (plus && minus)
+      return 0;
+    if (plus)
+      return 1;
+    if (minus)
+      return -1;
+    return 0;
   }
 
 }

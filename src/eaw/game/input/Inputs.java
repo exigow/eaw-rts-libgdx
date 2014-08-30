@@ -12,7 +12,9 @@ public class Inputs {
     cameraUp = new KeyboardButton(Input.Keys.W),
     cameraDown = new KeyboardButton(Input.Keys.S),
     cameraLeft = new KeyboardButton(Input.Keys.A),
-    cameraRight = new KeyboardButton(Input.Keys.D);
+    cameraRight = new KeyboardButton(Input.Keys.D),
+    cameraIn = new KeyboardButton(Input.Keys.E),
+    cameraOut = new KeyboardButton(Input.Keys.Q);
 
   public void update() {
     mouseLeft.update();
@@ -22,6 +24,8 @@ public class Inputs {
     cameraDown.update();
     cameraLeft.update();
     cameraRight.update();
+    cameraIn.update();
+    cameraOut.update();
   }
 
 }

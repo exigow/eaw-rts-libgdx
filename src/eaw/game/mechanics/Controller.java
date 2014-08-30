@@ -1,46 +1,34 @@
 package eaw.game.mechanics;
 
-import com.badlogic.gdx.Input;
 import eaw.game.Camera;
 import eaw.game.World;
-
-import java.util.ArrayList;
-import java.util.List;
+import eaw.game.input.Inputs;
 
 public class Controller {
 
-  final World world;
-  final Camera camera;
-  final Key
-    keyRight,
-    keyLeft;
-
-  List<Key> keys = new ArrayList<Key>();
-
-  private Key createKey(int gdxKey) {
-    Key key = new Key(gdxKey);
-    keys.add(key);
-    return key;
-  }
+  private final World world;
+  private final Camera camera;
+  private final Inputs inputs;
 
   public Controller(World world, Camera camera) {
     this.world = world;
     this.camera = camera;
-    keyRight = createKey(Input.Keys.D);
-    keyLeft = createKey(Input.Keys.A);
+    inputs = new Inputs();
   }
 
   public void execute(float deltaTime) {
     camera.update(1.0f);
-    for (Key key : keys) {
-      key.update();
-    }
+    inputs.update();
 
-    if (keyLeft.isPressed()) {
+    if (inputs.cameraUp.isPressed()) {
       System.out.println("left is pressed");
     }
 
-    if (keyLeft.isReleased()) {
+    if (inputs.cameraUp.isReleased()) {
+      System.out.println("left is released");
+    }
+
+    if (inputs.mouseLeft.isReleased()) {
       System.out.println("left is released");
     }
 

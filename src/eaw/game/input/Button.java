@@ -1,24 +1,24 @@
-package eaw.game.mechanics;
+package eaw.game.input;
 
-import com.badlogic.gdx.Gdx;
-
-public class Key {
+public abstract class Button {
 
   private enum State {
     WAIT, PRESS, HOLD, RELEASE
   }
 
   private State actualStep = State.WAIT;
-  private boolean changeBoolean = false;
-  private final int gdxKey;
+  protected final int key;
+  private boolean changed = false;
 
-  public Key(int gdxKey) {
-    this.gdxKey = gdxKey;
+  public Button(int key) {
+    this.key = key;
   }
 
-  public void update() {
-    boolean source = Gdx.input.isKeyPressed(gdxKey);
-    changeBoolean = false;
+  protected abstract boolean getSignal();
+
+  public final void update() {
+    boolean source = getSignal();
+    changed = false;
     if (source) {
       if (actualStep == State.PRESS) {
         changeTo(State.HOLD);
@@ -38,7 +38,7 @@ public class Key {
 
   private void changeTo(State step) {
     actualStep = step;
-    changeBoolean = true;
+    changed = true;
   }
 
   public boolean isPressed() {

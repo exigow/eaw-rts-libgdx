@@ -11,7 +11,7 @@ public class World implements Drawable {
 
   @Override
   public void draw(DrawingProvider provider) {
-    for (Group group : groups)
-      group.draw(provider);
+    for (Drawable drawableGroup : groups)
+      drawableGroup.draw(provider);
   }
 }

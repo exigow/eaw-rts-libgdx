@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.math.Matrix4;
-import eaw.game.mechanics.Group;
 import eaw.game.utilities.DrawingProvider;
 
 import java.awt.*;
@@ -24,8 +23,7 @@ public class WorldRenderer implements Drawable {
     renderProvider.setProjection(matrix);
     mainFBO.begin();
     clearBuffer();
-    for (Group group : world.groups)
-      group.draw(renderProvider);
+    world.draw(renderProvider);
     mainFBO.end();
   }
 

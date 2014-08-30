@@ -16,8 +16,8 @@ public class Group extends Identifiable implements Drawable {
 
   @Override
   public void draw(DrawingProvider provider) {
-    for (Unit unit : units)
-      unit.draw(provider);
+    for (Drawable drawableUnit : units)
+      drawableUnit.draw(provider);
   }
 
   public String toString() {
